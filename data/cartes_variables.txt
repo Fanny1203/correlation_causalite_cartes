@@ -10,30 +10,30 @@ On prie régulièrement
 On est endetté
 On utilise ChatGPT
 On fait du sport
-On a un animal de compagnie
-On regarde les infos tous les jours
-On prend un petit-déjeuner sucré
-On porte des lunettes
+On a des animaux de compagnie
+On regarde les infos
+On mange de sucre
+On porte des lunettes depuis longtemps
 On écoute de la musique classique
 On fréquente un lieu de culte
 On lit des livres papier
 On boit du café
-On habite en ville
-On marche beaucoup
+On habite dans une grande ville
+On marche
 On vit dans un environnement bruyant
 On déménage souvent
-On mange beaucoup de sucre
-On passe beaucoup de temps devant un écran
-On est l'aîné de sa fratrie
-On mange végétarien
-On utilise un agenda papier
+On mange de la viande
+On passe du temps devant un écran
+On a de frères et sœurs
+On boit des jus de fruit
+On consulte son agenda
 On a des tatouages
 On réussit à l'école
 On échoue à l'école
-On guérit d'une maladie
-On tombe malade
 On est en bonne santé
-On fait une dépression
+On tombe malade souvent
+On est en mauvaise santé
+On est triste
 On réussit un concours
 On échoue professionnellement
 On réussit professionnellement
@@ -44,8 +44,8 @@ On est performant physiquement
 On est créatif
 On est au chômage
 On se sent heureux
-On commet un délit
-On divorce
+On est malhonnête
+On a eu de relations amoureuses
 On réussit socialement
 On va régulièrement en cours
 On est motivé
