@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartes Corrélation vs Causalité</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="controls no-print">
+        <button onclick="showCards('variables')">Afficher les variables</button>
+        <button onclick="showCards('confusion')">Afficher facteurs de confusion</button>
+        <button onclick="showCards('structure')">Afficher cartes Structure</button>
+        <button onclick="showCards('all')">Afficher toutes les cartes</button>
+        <button onclick="showRules()">Afficher les règles</button>
+        <button onclick="window.print()">Imprimer</button>
+    </div>
+    <div class="cards-container" id="cardsContainer"></div>
+    <div id="rules"></div>
+
+    <script src="marked.min.js"></script>
+    <script>
+        async function loadCards() {
+            const responses = await Promise.all([
+                fetch('data/cartes_variables.txt'),
+                fetch('data/facteurs_confusion.txt'),
+                fetch('data/structures.txt')
+            ]);
+
+            const [variables, confusion, structures] = await Promise.all(
+                responses.map(r => r.text())
+            );
+
+            return {
+                variables: variables.split('\n').filter(line => line.trim()),
+                confusion: confusion.split('\n').filter(line => line.trim()),
+                structure: structures.split('\n').filter(line => line.trim())
+            };
+        }
+
+        function createCard(content, type) {
+            const card = document.createElement('div');
+            card.className = `card card-${type}`;
+            
+            const typeLabel = document.createElement('div');
+            typeLabel.className = 'card-type';
+            typeLabel.innerHTML = type === 'variables' ? ' ' : 
+                                  type === 'confusion' ? 'Facteur de confusion' :
+                                  'Structure';
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'card-content';
+            contentDiv.innerHTML = content;
+
+            card.appendChild(typeLabel);
+            card.appendChild(contentDiv);
+            return card;
+        }
+
+        function showRules() {
+            const rules = document.getElementById('rules');
+            const cardsContainer = document.getElementById('cardsContainer');
+            
+            // Cacher les cartes et afficher les règles
+            cardsContainer.style.display = 'none';
+            rules.style.display = 'block';
+            
+            // S'assurer que les règles sont chargées
+            if (!rules.innerHTML) {
+                loadRules();
+            }
+        }
+
+        function showCards(type) {
+            const rules = document.getElementById('rules');
+            const container = document.getElementById('cardsContainer');
+            
+            // Cacher les règles et afficher les cartes
+            rules.style.display = 'none';
+            container.style.display = 'grid';
+            
+            if (!window.allCards) return;
+
+            let cardsToShow = [];
+            if (type === 'all') {
+                cardsToShow = [
+                    ...window.allCards.variables.map(c => ({content: c, type: 'variables'})),
+                    ...window.allCards.confusion.map(c => ({content: c, type: 'confusion'})),
+                    ...window.allCards.structure.map(c => ({content: c, type: 'structure'}))
+                ];
+            } else {
+                cardsToShow = window.allCards[type].map(c => ({content: c, type}));
+            }
+
+            container.innerHTML = '';
+            cardsToShow.forEach(card => {
+                container.appendChild(createCard(card.content, card.type));
+            });
+        }
+
+        async function loadRules() {
+            const response = await fetch('regles.md');
+            const text = await response.text();
+            document.getElementById('rules').innerHTML = marked.parse(text);
+        }
+
+        function toggleRules() {
+            const rules = document.getElementById('rules');
+            rules.classList.toggle('visible');
+        }
+
+        // Chargement initial
+        loadCards().then(cards => {
+            window.allCards = cards;
+            showCards('all');
+        });
+        loadRules();
+    </script>
+</body>
+</html>

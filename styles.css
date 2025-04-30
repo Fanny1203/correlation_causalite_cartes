@@ -1,0 +1,146 @@
+@media print {
+    @page {
+        margin: 2cm 1cm;
+        size: A4;
+    }
+    body {
+        margin: 0;
+    }
+    .no-print {
+        display: none;
+    }
+    .card {
+        break-inside: avoid;
+    }
+    .cards-container {
+        gap: 10px;
+    }
+    #rules {
+        break-before: page;
+    }
+}
+
+body {
+    font-family: 'Quicksand', Arial, sans-serif;
+    max-width: 210mm;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 200px);
+    gap: 12px;
+    justify-content: center;
+}
+
+.card {
+    border: 2px solid #333;
+    border-radius: 12px;
+    padding: 15px;
+    height: 140px;
+    width: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card-variables {
+    border-color: #1976d2;
+}
+
+.card-confusion {
+    border-color: #388e3c;
+}
+
+.card-structure {
+    border-color: #7b1fa2;
+    font-weight: 600;
+}
+
+.card-type {
+    font-size: 0.8em;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-content {
+    font-size: 1.2em;
+    line-height: 1.4;
+}
+
+button {
+    font-family: 'Quicksand', Arial, sans-serif;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #2196f3;
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+button:hover {
+    background: #1976d2;
+}
+
+#rules {
+    margin: 20px auto;
+    max-width: 800px;
+    display: none;
+    padding: 20px;
+}
+
+#rules.visible {
+    display: block;
+}
+
+#rules h1 {
+    color: #1976d2;
+    text-align: center;
+}
+
+#rules h2 {
+    color: #333;
+    margin-top: 1.5em;
+}
+
+#rules h3 {
+    color: #666;
+}
+
+#rules ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+#rules ul li::before {
+    content: "•";
+    color: #1976d2;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+.cards-container.hidden, 
+#rules.hidden {
+    display: none;
+}
