@@ -1,60 +1,67 @@
-On passe du temps sur les réseaux sociaux
-On mange du chocolat
-On regarde des films avec Nicolas Cage
-On prend des médicaments
-On est vacciné
-On joue aux jeux vidéo
-On fume du cannabis
-On prend des douches froides
-On prie régulièrement
-On est endetté
-On utilise ChatGPT
-On fait du sport
-On a des animaux de compagnie
-On regarde les infos
-On mange de sucre
-On porte des lunettes depuis longtemps
-On écoute de la musique classique
-On fréquente un lieu de culte
-On lit des livres papier
-On boit du café
-On habite dans une grande ville
-On marche
-On vit dans un environnement bruyant
-On déménage souvent
-On mange de la viande
-On passe du temps devant un écran
-On a de frères et sœurs
-On boit des jus de fruit
-On consulte son agenda
-On a des tatouages
-On réussit à l'école
-On échoue à l'école
-On est en bonne santé
-On tombe malade souvent
-On est en mauvaise santé
-On est triste
-On réussit un concours
-On échoue professionnellement
-On réussit professionnellement
-On est stressé
-On dort bien
-On vit longtemps
-On est performant physiquement
-On est créatif
-On est au chômage
-On se sent heureux
-On est malhonnête
-On a eu de relations amoureuses
-On réussit socialement
-On va régulièrement en cours
-On est motivé
-On se concentre facilement
-On a des amis proches
-On perd du poids
-On prend du poids
-On est souvent en arrêt maladie
-On a une bonne estime de soi
-On gagne bien sa vie
-On est anxieux
-On adopte des comportements à risque
+On passe du temps sur les réseaux sociaux;reseauxsociaux.png;red
+On mange du chocolat;chocolat.png;green
+On mange de sucre;bonbons.png;
+On boit du café;cafe.png;
+On fume du cannabis;cannabis.png;
+On mange de la viande;viande.png;
+On boit des jus de fruit;jusdorange.png;
+On tombe malade souvent;malade.png;
+On vit longtemps;vieux.png;
+On est en surpoids;pesepersonne.png;;
+On est heureux;heureux.png;
+On est stressé;stress.png;
+On est performant physiquement;performance.png;
+On est créatif;creativite.png;
+On ment;mensonge.png;
+On est motivé;motivation.png;
+On se concentre facilement;concentration.png;
+On a une bonne estime de soi;estimedesoi.png;
+On prend des médicaments;medicaments.png;
+On est vacciné;vaccin.png;
+On porte des lunettes depuis longtemps;lunettes.png;
+On joue aux jeux vidéo;jeuxvideo.png;
+On regarde les infos;journalinfos.png;
+On écoute de la musique classique;cheforchestre.png;
+On lit des livres papier;livres.png;
+On passe du temps devant un écran;smartphone.png;
+On regarde des films violents;cinema.png;
+On va au cinéma;cinema.png;
+On est bon en maths;maths.png;
+On prend des douches froides;douchefroide.png;
+On fait du sport;sport.png
+On marche;marche.png;
+On se lève tôt;horlogedormir.png;
+On se couche tard;horlogedormir.png;
+On dort bien;dormir.png;
+On passe du temps à l'extérieur;parc.png;
+On prie régulièrement;priere.png;
+On est endetté;dette.png;
+On utilise ChatGPT;chatgpt.png
+On est croyant dans une religion;priere.png;
+On a des tatouages;tatouage.png;
+On adopte des comportements à risque;risque.png;
+On voyage loin quand on est en vacances;loin.png;
+On a des animaux de compagnie;chienchat.png
+On a de frères et sœurs;frereetsoeur.png;
+On a eu de relations amoureuses;cupidon.png;
+On réussit socialement;groupeamis.png;
+On a des amis proches;groupeamis.png;
+On passe du temps avec des amis;groupeamis.png;
+On habite dans une grande ville;ville.png;
+On vit dans un environnement bruyant;bruit.png;
+On déménage souvent;demenager.png;
+On prend les transports en commun;bus.png;
+Il pleut;pluie.png;
+Il fait chaud;chaud.png;
+On consulte son agenda;calendrier.png;
+On réussit à l'école;graduate.png;
+On réussit professionnellement;graduate.png;
+On travaille;travail.png;
+On va régulièrement en cours;ecole.png;
+On est riche;argent.png;
+On est optimiste;heureux.png;
+On perd ses clés régulièrement;cles.png;
+On parle à ses plantes;plante.png;
+On a des éternuements bruyants;eternuer.png;
+On conserve des tickets de caisse;ticketdecaisse.png;
+On a de paires de chaussures;bottes.png

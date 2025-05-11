@@ -1,6 +1,6 @@
-# Corrélation n'est pas causalité - Le jeu de cartes
+# Corrélation n'implique pas causalité - jeu de cartes
 
-Un jeu de cartes pédagogique et ludique pour comprendre la différence entre corrélation et causalité.
+Ce jeu s'inspire de "blanc manger coco" et a pour objectif de faire travailler l'idée que "corrélation n'implique pas causalité".
 
 ## 🎯 Description
 
@@ -32,6 +32,7 @@ correlation_causalite_cartes/
     ├── cartes_variables.txt
     ├── facteurs_confusion.txt
     └── structures.txt
+└── images/            # Images des cartes variables, et crédits
 ```
 
 ## 🎮 Utilisation
@@ -43,20 +44,8 @@ correlation_causalite_cartes/
 ## 🖨️ Impression
 
 - Les cartes sont optimisées pour l'impression sur papier A4
-- Chaque type de carte a une couleur de bordure distincte
+- Chaque type de carte a une couleur distincte, il es recommandé de les imprimer sur des papiers différents pour les reconnaitre aussi de dos
 - Les règles s'impriment sur une page séparée (petit bug : une page vide en début de document)
-
-
-## 🎨 Personnalisation
-
-Pour modifier l'apparence des cartes, éditez :
-- `styles.css` pour les styles généraux
-- Les classes CSS correspondantes pour les couleurs et la mise en page
-
-Pour modifier le contenu des cartes, éditez les fichiers texte dans le dossier `data/` :
-- `cartes_variables.txt` : Liste des événements à corréler
-- `facteurs_confusion.txt` : Liste des facteurs de confusion possibles
-- `structures.txt` : Types de corrélations (plus/moins)
 
 ## 📝 License
 

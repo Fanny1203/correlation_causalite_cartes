@@ -1,87 +1,168 @@
-@media print {
-    @page {
-        margin: 2cm 1cm;
-        size: A4;
-    }
-    body {
-        margin: 0;
-    }
-    .no-print {
-        display: none;
-    }
-    .card {
-        break-inside: avoid;
-    }
-    .cards-container {
-        gap: 10px;
-    }
-    #rules {
-        break-before: page;
-    }
+@page {
+    margin: 0;
+    size: A4;
+}
+
+:root {
+    --card-width: 52.4;
+    --card-height: 72.5;
+    --card-font-size: 1.4em;
+    --image-max-width: 25;
+    --grid-column-width: 52;
+    --card-border-color: #bdb4b4;
 }
 
 body {
     font-family: 'Quicksand', Arial, sans-serif;
-    max-width: 210mm;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+/* Uniquement pour l'affichage à l'écran */
+@media screen {
+    body {
+        padding: 20px;
+    }
+}
+
+/* Masquer les contrôles à l'impression */
+@media print {
+    .no-print {
+        display: none;
+    }
+    
+    #rules {
+        break-before: page;
+    }
+    
 }
 
 .controls {
     margin-bottom: 20px;
 }
 
+.buttons-row {
+    margin-bottom: 15px;
+}
+
+.size-controls {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.size-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.size-controls input {
+    width: 70px;
+    padding: 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 200px);
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, calc(var(--card-width) * 1mm));
+    gap: 0;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    width: 100%;
 }
 
 .card {
-    border: 2px solid #333;
-    border-radius: 12px;
-    padding: 15px;
-    height: 140px;
-    width: 170px;
+    border-right: 1px solid var(--card-border-color);
+    border-bottom: 1px solid var(--card-border-color);
+    padding: 8px;
+    height: calc(var(--card-height) * 1mm);
+    width: calc(var(--card-width) * 1mm);
+    margin: 0;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: initial;
+}
+
+.card:nth-child(1) {
+    border-top: 1px solid var(--card-border-color);
+}
+
+.card:nth-child(-n+4) {
+    border-top: 1px solid var(--card-border-color);
+}
+
+.card:nth-child(4n+1) {
+    border-left: 1px solid var(--card-border-color);
+}
+
+.card-inner {
+    border: 4px solid;
+    border-radius: 8px;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #333;
+    background: white;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.card-image {
+    max-width: calc(var(--image-max-width) * 1mm);
+    height: auto;
+    margin-top: 15px;
+    object-fit: contain;
+}
+
+.card:hover .card-inner {
+    filter: saturate(1.2);
+}
+
+.card-structure .card-content {
+    font-weight: 600;
+}
+
+.card-type {
+    font-size: 0.9em;
+    color: white;
+    padding: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 4px 4px 0 0;
+}
+
+.card-confusion .card-type {
+    background: #7b1fa2;
+}
+
+.card-structure .card-type {
+    background: #1976d2;
+}
+
+.card-variables .card-type {
+    display: none;
+}
+
+.card-content {
+    font-size: var(--card-font-size);
+    line-height: 1.4;
+    padding: 12px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 auto;
-    transition: transform 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-2px);
-}
-
-.card-variables {
-    border-color: #1976d2;
-}
-
-.card-confusion {
-    border-color: #388e3c;
-}
-
-.card-structure {
-    border-color: #7b1fa2;
-    font-weight: 600;
-}
-
-.card-type {
-    font-size: 0.8em;
-    color: #555;
-    margin-bottom: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.card-content {
-    font-size: 1.2em;
-    line-height: 1.4;
 }
 
 button {

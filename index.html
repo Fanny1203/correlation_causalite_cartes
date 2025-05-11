@@ -11,12 +11,19 @@
 </head>
 <body>
     <div class="controls no-print">
-        <button onclick="showCards('variables')">Afficher les variables</button>
-        <button onclick="showCards('confusion')">Afficher facteurs de confusion</button>
-        <button onclick="showCards('structure')">Afficher cartes Structure</button>
-        <button onclick="showCards('all')">Afficher toutes les cartes</button>
-        <button onclick="showRules()">Afficher les règles</button>
-        <button onclick="window.print()">Imprimer</button>
+        <div class="buttons-row">
+            <button onclick="showCards('variables')">Afficher les variables</button>
+            <button onclick="showCards('confusion')">Afficher facteurs de confusion</button>
+            <button onclick="showCards('structure')">Afficher cartes Structure</button>
+            <button onclick="showCards('all')">Afficher toutes les cartes</button>
+            <button onclick="showRules()">Afficher les règles</button>
+            <button onclick="window.print()">Imprimer</button>
+        </div>
+        <div class="size-controls">
+            <label>Largeur des cartes: <input type="number" id="cardWidth" value="52.4" min="20" max="300" step="1" onchange="updateCardSize()"> mm</label>
+            <label>Hauteur des cartes: <input type="number" id="cardHeight" value="72.5" min="20" max="300" step="1" onchange="updateCardSize()"> mm</label>
+            <label>Taille du texte: <input type="number" id="fontSize" value="1.4" min="0.8" max="2" step="0.1" onchange="updateCardSize()"> em</label>
+        </div>
     </div>
     <div class="cards-container" id="cardsContainer"></div>
     <div id="rules"></div>
@@ -35,28 +42,69 @@
             );
 
             return {
-                variables: variables.split('\n').filter(line => line.trim()),
+                variables: variables.split('\n').filter(line => line.trim()).map(line => {
+                    const [text, image, color] = line.split(';');
+                    return { text, image: image, color: color || null };
+                }),
                 confusion: confusion.split('\n').filter(line => line.trim()),
                 structure: structures.split('\n').filter(line => line.trim())
             };
         }
 
+        function getRandomColor() {
+            const colors = [
+                '#e53935', // rouge
+                '#faa21a', // jaune
+                '#388e3c'  // vert
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
         function createCard(content, type) {
             const card = document.createElement('div');
             card.className = `card card-${type}`;
+            const innerCard = document.createElement('div');
+            innerCard.className = 'card-inner';
+            
+            // Définir la couleur de la bordure selon le type
+            if (type === 'confusion') {
+                innerCard.style.borderColor = '#7b1fa2';
+            } else if (type === 'structure') {
+                innerCard.style.borderColor = '#1976d2';
+            }
             
             const typeLabel = document.createElement('div');
             typeLabel.className = 'card-type';
-            typeLabel.innerHTML = type === 'variables' ? ' ' : 
-                                  type === 'confusion' ? 'Facteur de confusion' :
-                                  'Structure';
+            typeLabel.textContent = type === 'confusion' ? 'Facteur de confusion' : 
+                                  type === 'structure' ? 'Structure' : '';
             
             const contentDiv = document.createElement('div');
             contentDiv.className = 'card-content';
-            contentDiv.innerHTML = content;
+            
+            if (type === 'variables') {
+                const textDiv = document.createElement('div');
+                textDiv.innerHTML = content.text;
+                contentDiv.appendChild(textDiv);
+                const img = document.createElement('img');
+                img.src = 'images/' + content.image;
+                if (content.image=='') {
+                    img.src = 'images/cinema.png';
+                } 
+                img.className = 'card-image';
+                contentDiv.appendChild(img);
+                if(content.color!=null) {
+                    innerCard.style.borderColor = content.color;
+                    console.log(content.color);
+                }else{
+                    innerCard.style.borderColor = getRandomColor();
+                }
+            } else {
+                contentDiv.innerHTML = content;
+            }
 
-            card.appendChild(typeLabel);
-            card.appendChild(contentDiv);
+            innerCard.appendChild(typeLabel);
+            innerCard.appendChild(contentDiv);
+            card.appendChild(innerCard);
             return card;
         }
 
@@ -112,12 +160,34 @@
             rules.classList.toggle('visible');
         }
 
+        function updateCardSize() {
+            const width = document.getElementById('cardWidth').value;
+            const height = document.getElementById('cardHeight').value;
+            const fontSize = document.getElementById('fontSize').value;
+            
+            // Stocker les valeurs numériques sans unités
+            document.documentElement.style.setProperty('--card-width', width);
+            document.documentElement.style.setProperty('--card-height', height);
+            document.documentElement.style.setProperty('--card-font-size', fontSize + 'em');
+            
+            // Recalculer la taille de l'image en fonction de la taille de la carte
+            const imageSize = Math.min(width, height) * 0.4;
+            document.documentElement.style.setProperty('--image-max-width', imageSize);
+            
+            // Mettre à jour la grille
+            document.documentElement.style.setProperty('--grid-column-width', (parseInt(width) + 2));
+        }
+
         // Chargement initial
         loadCards().then(cards => {
             window.allCards = cards;
             showCards('all');
+            updateCardSize(); // Initialiser les tailles
         });
         loadRules();
     </script>
+    <footer class="no-print">
+        <p><a href="images/credits_images.html">Crédits images</a></p>
+    </footer>
 </body>
 </html>
