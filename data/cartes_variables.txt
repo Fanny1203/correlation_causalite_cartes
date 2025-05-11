@@ -55,7 +55,7 @@ Il pleut;pluie.png;
 Il fait chaud;chaud.png;
 On consulte son agenda;calendrier.png;
 On réussit à l'école;graduate.png;
-On réussit professionnellement;graduate.png;
+On a du plaisir au travail;travail.png;
 On travaille;travail.png;
 On va régulièrement en cours;ecole.png;
 On est riche;argent.png;
