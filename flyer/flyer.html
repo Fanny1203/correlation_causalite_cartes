@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrélation ou Causalité ? - Un jeu pour développer l'esprit critique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            color: #34495e;
+            margin-bottom: 2rem;
+        }
+
+        .features {
+            list-style: none;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .features li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features li::before {
+            content: "•";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .tagline {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div class="hero-image">
+                <img src="image_jeu_flyer.png" alt="Aperçu du jeu Corrélation ou Causalité">
+            </div>
+            <div class="hero-content">
+                <h1>Corrélation ou Causalité ?</h1>
+                <p class="tagline">Un jeu captivant pour développer votre esprit critique</p>
+                <ul class="features">
+                    <li>Apprenez à distinguer corrélation et causalité</li>
+                    <li>Analysez des situations réelles</li>
+                    <li>Développez votre pensée critique</li>
+                    <li>Interface intuitive et ludique</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
